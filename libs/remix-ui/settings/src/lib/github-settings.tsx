@@ -49,90 +49,66 @@ export function GithubSettings(props: GithubSettingsProps) {
   }
 
   return (
-    <div className="border-top">
-      <div className="card-body pt-3 pb-2">
-        <h6 className="card-title">
-          <FormattedMessage id="settings.gitAccessTokenTitle" />
-        </h6>
-        <p className="mb-1">
-          <FormattedMessage id="settings.gitAccessTokenText" />
-        </p>
-        <p className="">
-          <FormattedMessage id="settings.gitAccessTokenText2" />
-        </p>
-        <p className="mb-1">
-          <a className="text-primary" target="_blank" href={gitAccessTokenLink}>
-            {gitAccessTokenLink}
-          </a>
-        </p>
-        <div>
-          <label className="mb-0 pb-0">
-            <FormattedMessage id="settings.token" />:
-          </label>
-          <div className="input-group text-secondary mb-0 h6">
-            <input
-              id="gistaccesstoken"
-              data-id="settingsTabGistAccessToken"
-              type="password"
-              className="form-control"
-              onChange={(e) => handleChangeTokenState(e)}
-              value={githubToken}
-            />
-            <div className="input-group-append">
-              <CopyToClipboard
-                tip={intl.formatMessage({ id: 'settings.copy' })}
-                content={githubToken}
-                data-id="copyToClipboardCopyIcon"
-                className="far fa-copy ml-1 p-2 mt-1"
-                direction={'top'}
-              />
-            </div>
-          </div>
-        </div>
-        <div>
-          <label className="pt-2 mb-0 pb-0">
-            <FormattedMessage id="settings.username" />:
-          </label>
-          <div className="text-secondary mb-0 h6">
-            <input
-              id="githubusername"
-              data-id="settingsTabGithubUsername"
-              type="text"
-              className="form-control"
-              onChange={(e) => handleChangeUserNameState(e)}
-              value={githubUserName}
-            />
-          </div>
-        </div>
-        <div>
-          <label className="pt-2 mb-0 pb-0">
-            <FormattedMessage id="settings.email" />:
-          </label>
-          <div className="text-secondary mb-0 h6">
-            <input id="githubemail" data-id="settingsTabGithubEmail" type="text" className="form-control" onChange={(e) => handleChangeEmailState(e)} value={githubEmail} />
-            <div className="d-flex justify-content-end pt-2">
-              <input
-                className="btn btn-sm btn-primary ml-2"
-                id="savegisttoken"
-                data-id="settingsTabSaveGistToken"
-                onClick={saveGithubToken}
-                value={intl.formatMessage({ id: 'settings.save' })}
-                type="button"
-              ></input>
-              <CustomTooltip
-                tooltipText={<FormattedMessage id="settings.deleteGithubCredentials" />}
-                tooltipClasses="text-nowrap"
-                tooltipId="removegisttokenTooltip"
-                placement="top-start"
-              >
-                <button className="btn btn-sm btn-secondary ml-2" id="removegisttoken" data-id="settingsTabRemoveGistToken" onClick={removeToken}>
-                  <FormattedMessage id="settings.remove" />
-                </button>
-              </CustomTooltip>
-            </div>
-          </div>
+    <>
+      <p className="mb-1">
+        <FormattedMessage id="settings.gitAccessTokenText" />
+      </p>
+      <p className="mb-1">
+        <a href={gitAccessTokenLink} target="_blank" rel="noopener noreferrer" className="text-primary">{intl.formatMessage({ id: 'settings.gitAccessTokenText2' })}</a> <FormattedMessage id="settings.gitAccessTokenText3" />
+      </p>
+      <div className="text-secondary my-2">
+        <input
+          id="gistaccesstoken"
+          data-id="settingsTabGistAccessToken"
+          type="password"
+          className="form-control"
+          onChange={(e) => handleChangeTokenState(e)}
+          value={githubToken}
+          placeholder={intl.formatMessage({ id: 'settings.token' })}
+        />
+      </div>
+      <div className="text-secondary my-2">
+        <input
+          id="githubusername"
+          data-id="settingsTabGithubUsername"
+          type="text"
+          className="form-control"
+          onChange={(e) => handleChangeUserNameState(e)}
+          value={githubUserName}
+          placeholder={intl.formatMessage({ id: 'settings.username' })}
+        />
+      </div>
+      <div className="text-secondary mt-2 mb-0">
+        <input
+          id="githubemail"
+          data-id="settingsTabGithubEmail"
+          type="text"
+          className="form-control"
+          onChange={(e) => handleChangeEmailState(e)}
+          value={githubEmail}
+          placeholder={intl.formatMessage({ id: 'settings.email' })}
+        />
+        <div className="d-flex pt-3">
+          <input
+            className="btn btn-sm btn-primary"
+            id="savegisttoken"
+            data-id="settingsTabSaveGistToken"
+            onClick={saveGithubToken}
+            value={intl.formatMessage({ id: 'settings.save' })}
+            type="button"
+          ></input>
+          {/* <CustomTooltip
+              tooltipText={<FormattedMessage id="settings.deleteGithubCredentials" />}
+              tooltipClasses="text-nowrap"
+              tooltipId="removegisttokenTooltip"
+              placement="top-start"
+            >
+              <button className="btn btn-sm btn-secondary ml-2" id="removegisttoken" data-id="settingsTabRemoveGistToken" onClick={removeToken}>
+                <FormattedMessage id="settings.remove" />
+              </button>
+            </CustomTooltip> */}
         </div>
       </div>
-    </div>
+    </>
   )
 }
