@@ -31,78 +31,36 @@ export function EtherscanSettings(props: EtherscanSettingsProps) {
   }
 
   return (
-    <div className="border-top">
-      <div className="card-body pt-3 pb-2">
-        <h6 className="card-title">
-          <FormattedMessage id="settings.etherscanTokenTitle" />
-        </h6>
-        <p className="mb-1">
-          <FormattedMessage id="settings.etherscanAccessTokenText" />
-        </p>
-        <p className="">
-          <FormattedMessage id="settings.etherscanAccessTokenText2" />
-        </p>
-        <p className="mb-1">
-          <a className="text-primary" target="_blank" href={etherscanTokenLink}>
-            {etherscanTokenLink}
-          </a>
-        </p>
-        <div>
-          <label className="mb-0 pb-0">
-            <FormattedMessage id="settings.token" />:
-          </label>
-          <div className="input-group text-secondary mb-0 h6">
-            <input
-              id="etherscanAccessToken"
-              data-id="settingsTabEtherscanAccessToken"
-              type="password"
-              className="form-control"
-              onChange={(e) => handleChangeTokenState(e)}
-              value={etherscanToken}
-            />
-            <div className="input-group-append">
-              <CopyToClipboard
-                tip={intl.formatMessage({ id: 'settings.copy' })}
-                content={etherscanToken}
-                data-id="copyToClipboardCopyIcon"
-                className="far fa-copy ml-1 p-2 mt-1"
-                direction={'top'}
-              />
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="text-secondary mb-0 h6">
-            <div className="d-flex justify-content-end pt-2">
-              <input
-                className="btn btn-sm btn-primary ml-2"
-                id="saveetherscantoken"
-                data-id="settingsTabSaveEtherscanToken"
-                onClick={saveEtherscanToken}
-                value={intl.formatMessage({ id: 'settings.save' })}
-                type="button"
-                disabled={etherscanToken === ''}
-              ></input>
-              <CustomTooltip
-                tooltipText={<FormattedMessage id="settings.deleteEtherscanToken" />}
-                tooltipClasses="text-nowrap"
-                tooltipId="removeetherscantokenTooltip"
-                placement="left-start"
-              >
-                <button
-                  className="btn btn-sm btn-secondary ml-2"
-                  id="removeetherscantoken"
-                  data-id="settingsTabRemoveEtherscanToken"
-                  title="Delete Etherscan token"
-                  onClick={removeToken}
-                >
-                  <FormattedMessage id="settings.remove" />
-                </button>
-              </CustomTooltip>
-            </div>
-          </div>
-        </div>
+    <>
+      <p className="mb-1">
+        <FormattedMessage id="settings.etherscanAccessTokenText" />
+      </p>
+      <p className="mb-1">
+        <a className="text-primary" target="_blank" href={etherscanTokenLink}>
+          {intl.formatMessage({ id: 'settings.etherscanAccessTokenText2' })}
+        </a> <FormattedMessage id="settings.etherscanAccessTokenText3" />
+      </p>
+      <div className="text-secondary mt-2 mb-0">
+        <input
+          id="etherscanAccessToken"
+          data-id="settingsTabEtherscanAccessToken"
+          type="password"
+          className="form-control"
+          onChange={(e) => handleChangeTokenState(e)}
+          value={etherscanToken}
+          placeholder={intl.formatMessage({ id: 'settings.token' })}
+        />
       </div>
-    </div>
+      <div className="d-flex pt-3">
+        <input
+          className="btn btn-sm btn-primary"
+          id="saveetherscantoken"
+          data-id="settingsTabSaveEtherscanToken"
+          onClick={saveEtherscanToken}
+          value={intl.formatMessage({ id: 'settings.save' })}
+          type="button"
+        ></input>
+      </div>
+    </>
   )
 }

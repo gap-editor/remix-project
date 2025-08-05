@@ -39,7 +39,7 @@ export function SindriSettings(props: SindriSettingsProps) {
       <p className="mb-1">
         <a href={sindriAccessTokenLink} target="_blank" rel="noopener noreferrer" className="text-primary">{intl.formatMessage({ id: 'settings.gitAccessTokenText2' })}</a> <FormattedMessage id="settings.sindriAccessTokenText2" />
       </p>
-      <div className="text-secondary my-2">
+      <div className="text-secondary mt-2 mb-0">
         <input
           id="sindriaccesstoken"
           data-id="settingsTabSindriAccessToken"
@@ -49,21 +49,21 @@ export function SindriSettings(props: SindriSettingsProps) {
           value={sindriToken}
           placeholder={intl.formatMessage({ id: 'settings.token' })}
         />
-        <div className="d-flex pt-3">
-          <input
-            className="btn btn-sm btn-primary"
-            id="savesindritoken"
-            data-id="settingsTabSaveSindriToken"
-            onClick={saveSindriToken}
-            value={intl.formatMessage({ id: 'settings.save' })}
-            type="button"
-          ></input>
-          {/* <CustomTooltip tooltipText={<FormattedMessage id="settings.deleteSindriCredentials" />} tooltipClasses="text-nowrap" tooltipId="removesindritokenTooltip" placement="top-start">
+      </div>
+      <div className="d-flex pt-3">
+        <input
+          className="btn btn-sm btn-primary"
+          id="savesindritoken"
+          data-id="settingsTabSaveSindriToken"
+          onClick={saveSindriToken}
+          value={intl.formatMessage({ id: 'settings.save' })}
+          type="button"
+        ></input>
+        {/* <CustomTooltip tooltipText={<FormattedMessage id="settings.deleteSindriCredentials" />} tooltipClasses="text-nowrap" tooltipId="removesindritokenTooltip" placement="top-start">
               <button className="btn btn-sm btn-secondary ml-2" id="removesindritoken" data-id="settingsTabRemoveSindriToken" onClick={removeToken}>
                 <FormattedMessage id="settings.remove" />
               </button>
             </CustomTooltip> */}
-        </div>
       </div>
     </>
   )
